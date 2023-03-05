@@ -1,11 +1,12 @@
 {
   "name": "Secrets",
   "version": "1.0.0",
+  "main": "app.js",
+  "license": "ISC",
   "engines": {
     "node": ">=19 <20"
-  }
-  "description": "This is a seret posting app",
-  "main": "app.js",
+  },
+  "description": "", 
   "dependencies": {
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
@@ -24,7 +25,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Abhay K",
-  "license": "ISC",
- 
+  "author": "Abhay K"
 }
