@@ -1,7 +1,10 @@
 {
   "name": "Secrets",
   "version": "1.0.0",
-  "description": "",
+  "engines": {
+    "node": ">=19 <20"
+  }
+  "description": "This is a seret posting app",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -21,10 +24,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Abhay K",
   "license": "ISC",
-  "engines": {
-    "node": ">=19.7.0",
-    "npm": "<=9.5.0"
-  }
+ 
 }
