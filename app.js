@@ -10,6 +10,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 
+
 const app = express();
 
 app.use(express.static("public"));
@@ -24,10 +25,11 @@ app.use(session({
   saveUninitialized: false
 }));
 
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://abhaykr489:A@nit01k@secretcluster.fwmozun.mongodb.net/userDB", {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema ({
@@ -64,6 +66,7 @@ passport.use(new GoogleStrategy({
     console.log(profile);
 
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      
       return cb(err, user);
     });
   }
@@ -81,6 +84,7 @@ app.get("/auth/google/secrets",
   passport.authenticate('google', { failureRedirect: "/login" }),
   function(req, res) {
     // Successful authentication, redirect to secrets.
+    
     res.redirect("/secrets");
   });
 
@@ -95,6 +99,7 @@ app.get("/register", function(req, res){
 app.get("/secrets", function(req, res){
   User.find({"secret": {$ne: null}}, function(err, foundUsers){
     if (err){
+      alert("You have already registered");
       console.log(err);
     } else {
       if (foundUsers) {
@@ -133,9 +138,17 @@ app.post("/submit", function(req, res){
 });
 
 app.get("/logout", function(req, res){
-  req.logout();
-  res.redirect("/");
-});
+  req.logout(function(err){
+    if(err) {
+      console.log(err);
+    }
+    else{
+      res.redirect("/");
+    }
+  })
+  });
+  
+
 
 app.post("/register", function(req, res){
 

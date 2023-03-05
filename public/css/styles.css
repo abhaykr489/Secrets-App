@@ -14,3 +14,9 @@ body {
   color: #fff;
   background-color: #000;
 }
+
+.copyright {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 40px;
+}
